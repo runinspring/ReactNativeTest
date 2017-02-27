@@ -5,7 +5,6 @@
  */
 import React, { Component } from 'react';
 import MainScreen from './src/MainScreen';
-import NavitagionBar from './src/NavBarCommon';
 import {
     NavigatorIOS,
     Navigator,
@@ -45,8 +44,6 @@ export default class ios extends Component {
     render() {
         console.log(11)
         return (
-            <View style={{flex:1}}>
-            <NavitagionBar/>
             <Navigator
                 style={{ flex: 1 }}
                 initialRoute={{
@@ -55,7 +52,6 @@ export default class ios extends Component {
                 configureScene={this.configureScene}
                 renderScene={this.renderScene}
                 />
-                </View>
         );
     }
 }
