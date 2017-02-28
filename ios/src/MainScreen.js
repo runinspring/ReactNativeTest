@@ -8,6 +8,9 @@ import {
     Text
 } from 'react-native';
 export default class MainScreen extends Component {
+    state={
+        title:'主菜单'
+    }
     onButtonPress(id) {
         // console.log('id:', id)
 
@@ -25,27 +28,25 @@ export default class MainScreen extends Component {
         //     title:title,
         //     component:component
         // })
+        // var obj = this.props,
         this.props.navigator.push({
             component: Sysinfo,
+            title:'系统信息'
         })
 
     }
 
     render() {
-        var styles = this.props.mainStyles;
+        const {styles} = this.props;
         return (
-            <View style={styles.container}>
-                <StatusBar barStyle="light-content" />
-                <View style={[styles.heading,styles.content]}>
-                    <Text style={styles.headText}>主菜单</Text>
-                </View>
-                <TouchableHighlight style={styles.button}
-                                    underlayColor="#d9d9d9"//点击后的颜色
-                                    onPress={this.onButtonPress.bind(this, 0)}>
+            <View style={[styles.container,{backgroundColor:'gray'}]}>
+                <Text>主菜单</Text>
+                <TouchableHighlight onPress={this.onButtonPress.bind(this, 0)}>
                     <Text style={{color: '#000000'}}>系统信息</Text>
                 </TouchableHighlight>
-                <Button title="系统信息" onPress={this.onButtonPress.bind(this, 1)}/>
             </View>
         );
     }
 }
+
+// 

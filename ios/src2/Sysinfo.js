@@ -11,7 +11,7 @@ export default class Sysinfo extends Component {
     render() {
         var styles = this.props.mainStyles;
         console.log('Sysinfo.render')
-        console.log('styles.buttonBackUp:',styles.content)
+        // console.log('styles.buttonBackUp:',styles.content)
         return (
             <View style={styles.container}>
                 <View style={[styles.heading,styles.content]}>

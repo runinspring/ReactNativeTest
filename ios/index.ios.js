@@ -7,7 +7,7 @@ import React, { Component } from 'react';
 import MainScreen from './src/MainScreen';
 import NavitagionBar from './src/NavBarCommon';
 import {
-    NavigatorIOS,
+    NavigatorIOS, StatusBar,
     Navigator,
     AppRegistry,
     Text, View,
@@ -39,26 +39,62 @@ export default class ios extends Component {
      * @returns {XML} 页面
      */
     renderScene(route, navigator) {
-        return <route.component navigator={navigator} mainStyles={styles}  {...route.passProps} />;
+        console.log('index.route:', route)
+        // console.log('renderScene',route.)
+        // this.setState({title:route.title})
+        // console.log(77878,)
+        // route.stage.setState({title:route.title})
+        // console.log(route.stage.state)
+        // console.log('route:',this)
+        return <route.component navigator={navigator} styles={styles}  {...route.passProps} />;
     }
-
+    /**
+     * 顶部导航器的样式
+     */
+    NavigationBarRouteMapper = {
+        LeftButton: function (route, navigator, index, navState) {
+            if (!route.navRightShow) {
+                return <Text></Text>
+            }else{
+                return <Text style={[styles.navButton, { marginLeft: 4 }]}>&lt;Left</Text>
+            }
+        },
+        RightButton: function (route, navigator, index, navState) {
+            if (!route.navRightShow) {
+                return <Text></Text>
+            } else {
+                return <Text style={[styles.navButton, { marginRight: 4 }]}>Right&gt;</Text>
+            }
+        },
+        Title: function (route, navigator, index, navState) {
+            return <Text style={styles.navButton}>{route.title}</Text>
+        }
+    }
     render() {
-        console.log(11)
         return (
-            <View style={{flex:1}}>
-            <NavitagionBar/>
-            <Navigator
-                style={{ flex: 1 }}
-                initialRoute={{
-                    component: MainScreen,
-                }}
-                configureScene={this.configureScene}
-                renderScene={this.renderScene}
-                />
-                </View>
+            <View style={[styles.container, { flexDirection: 'row' }]}>
+                <StatusBar barStyle="dark-content" />
+                <Navigator
+                    style={styles.container}
+                    initialRoute={{
+                        component: MainScreen,
+                        title: '主菜单',
+                        navLeftShow: false,
+                        navRightShow: false,
+                    }}
+                    navigationBar={<Navigator.NavigationBar
+                        routeMapper={this.NavigationBarRouteMapper}
+                        style={{ backgroundColor: 'white' }}
+                        />}
+                    configureScene={this.configureScene}
+                    renderScene={this.renderScene.bind(this)}
+                    sceneStyle={{ marginTop: 64 }}
+                    />
+            </View>
         );
     }
 }
+// <StatusBar barStyle="light-content" />
 const styles = StyleSheet.create({
     //整个容器
     container: {
@@ -68,8 +104,11 @@ const styles = StyleSheet.create({
         justifyContent: 'center',//垂直居中
         alignItems: 'center',//水平居中
     },
+    navButton: {
+        paddingTop: 13,
+    },
     // 导航栏
-    heading: {
+    hdeading: {
         height: 50,
         paddingTop: 20,
         backgroundColor: '#ff1046',
