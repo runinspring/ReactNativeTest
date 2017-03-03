@@ -5,8 +5,9 @@ import {
     Text
 } from 'react-native';
 var Dimensions = require('Dimensions');
+
 var {width, height, scale} = Dimensions.get('window');
-import MainScreen from './MainScreen';
+import MainScreen from '../MainScreen';
 export default class Sysinfo extends Component {
     render() {
         var {styles} = this.props;
