@@ -3,14 +3,10 @@ import Sysinfo from './Sysinfo';
 import Sysinfo2 from './Sysinfo2';
 import {
     StyleSheet,
-    StatusBar,
-    View, Button, TouchableHighlight,
+    View, TouchableHighlight,
     Text
 } from 'react-native';
 export default class MainMenu extends Component {
-    state={
-        title:'主菜单'
-    }
     onButtonPress(id) {
         // console.log('id:', id)
 
@@ -33,14 +29,12 @@ export default class MainMenu extends Component {
             component: Sysinfo,
             title:'系统信息'
         })
-
     }
 
     render() {
         const {styles} = this.props;
         return (
-            <View style={[styles.container,{backgroundColor:'gray'}]}>
-                <Text>主菜单</Text>
+            <View style={[styles.container,styles.xyCenter,{backgroundColor:'gray'}]}>
                 <TouchableHighlight onPress={this.onButtonPress.bind(this, 0)}>
                     <Text style={{color: '#000000'}}>系统信息</Text>
                 </TouchableHighlight>
@@ -48,5 +42,3 @@ export default class MainMenu extends Component {
         );
     }
 }
-
-// 

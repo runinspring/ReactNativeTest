@@ -19,7 +19,7 @@ exports.NavigationBarRouteMapper = {
         }
     },
     Title: function (route, navigator, index, navState) {
-        // console.log(444,navigator)
+        console.log(444,route.title)
         return <Text style={[styles.navButton,styles.title]}>{route.title}</Text>
     }
 }

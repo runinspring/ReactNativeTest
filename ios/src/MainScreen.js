@@ -45,4 +45,14 @@ const styles = StyleSheet.create({
     container: {
         flex: 1
     },
+    xCenter:{
+        alignItems: 'center',//水平居中
+    },
+    yCenter:{
+        justifyContent: 'center',//垂直居中
+    },
+    xyCenter:{
+        alignItems: 'center',//水平居中
+        justifyContent: 'center',//垂直居中
+    },
 });
