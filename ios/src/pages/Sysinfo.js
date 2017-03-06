@@ -14,8 +14,7 @@ export default class Sysinfo extends Component {
         console.log('Sysinfo.render')
         // console.log('styles.buttonBackUp:',styles.content)
         return (
-            <View style={styles.container}>
-                <Text >系统信息</Text>
+            <View style={[styles.container,styles.xCenter]}>
                 <Text onPress={() => {
                             //this.props.navigator.push({
                             //  component: MainScreen,

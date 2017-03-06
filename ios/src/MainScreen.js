@@ -13,7 +13,7 @@ export default class MainScreen extends Component {
      * @returns {XML} 页面
      */
     renderScene(route, navigator) {
-        // console.log('index.route:', navigator.navigationBar)
+        // console.log('index.route:',route)
         return <route.component navigator={navigator} styles={styles}  {...route.passProps} />;
     }
     render() {
@@ -24,13 +24,20 @@ export default class MainScreen extends Component {
                     initialRoute={{
                         component: MainMenu,
                         title: '主菜单',
-                        navLeftShow: false,
-                        navRightShow: false,
+                        left:{
+                            visible:false,//是否可见
+                            content:'',//显示的按钮文字
+                            // onPress:function//点击后触发的方法
+                        },
+                        right:{
+                            visible:false,//是否可见
+                            // content:'',//显示的按钮文字
+                        }
                     }}
                     configureScene={(route, routeStack)=>{return Navigator.SceneConfigs.HorizontalSwipeJump}}
                     navigationBar={<Navigator.NavigationBar
                         routeMapper={NavBar.NavigationBarRouteMapper}
-                        style={{ backgroundColor: 'white'}}
+                        style={{ backgroundColor: 'white',borderTopColor:'red'}}
                         />}
                     renderScene={this.renderScene.bind(this)}
                     sceneStyle={{ marginTop: 64 }}
