@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import MainMenu from './pages/MainMenu';
+import Sysinfo from './pages/Sysinfo';
 import NavBar from './component/NavBar';
 import {
     StyleSheet,
@@ -23,6 +24,7 @@ export default class MainScreen extends Component {
                 <Navigator
                     initialRoute={{
                         component: MainMenu,
+                        // component: Sysinfo,
                         title: '主菜单',
                         left:{
                             visible:false,//是否可见

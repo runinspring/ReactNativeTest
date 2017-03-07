@@ -9,33 +9,37 @@ import {
 export default class MainMenu extends Component {
     onButtonPress(id) {
         // console.log('id:', id)
-
+        var obj = {};
         switch (id) {
             case 0:
-                var title = '系统信息';
-                var component = Sysinfo;
+                obj = {
+                    component: Sysinfo,
+                    title: '系统信息',
+                    left: {
+                        visible: true,
+                        onPress: this.props.navigator.jumpBack
+                    },
+                    right: {
+                        visible: false,//是否可见
+                    },
+                }
                 break;
             case 1:
-                title = '系统信息2';
-                component = Sysinfo2;
+                obj = {
+                    component: Sysinfo2,
+                    title: '系统信息2',
+                    left: {
+                        visible: true,
+                        onPress: this.props.navigator.jumpBack
+                    },
+                    right: {
+                        visible: false,//是否可见
+                    },
+                }
                 break;
         }
-        // this.props.stage.refs.nav.push({
-        //     title:title,
-        //     component:component
-        // })
-        // var obj = this.props,
-        this.props.navigator.push({
-            component: Sysinfo,
-            title: '系统信息',
-            left:{
-                visible:true,
-                onPress:this.props.navigator.jumpBack
-            },
-            right: {
-                visible: false,//是否可见
-            },
-        })
+
+        this.props.navigator.push(obj)
     }
 
     render() {
@@ -44,6 +48,9 @@ export default class MainMenu extends Component {
             <View style={[styles.container, styles.xCenter, { backgroundColor: 'gray' }]}>
                 <TouchableHighlight onPress={this.onButtonPress.bind(this, 0)}>
                     <Text style={{ color: '#000000' }}>系统信息</Text>
+                </TouchableHighlight>
+                <TouchableHighlight onPress={this.onButtonPress.bind(this, 1)}>
+                    <Text style={{ color: '#000000' }}>系统信息2</Text>
                 </TouchableHighlight>
             </View>
         );

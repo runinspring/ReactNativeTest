@@ -6,7 +6,7 @@ import {
 exports.NavigationBarRouteMapper = {
     LeftButton: function (route, navigator, index, navState) {
         var left = route.left;
-        var content = '<Left';
+        var content = '<返回';
         if (left && left.content) content = left.content;
         if (left && !left.visible) {
             return null;

@@ -6,13 +6,13 @@ import {
 } from 'react-native';
 export default class Sysinfo2 extends Component {
     render() {
+        var {styles} = this.props;
         console.log('Sysinfo2.render')
         return (
-            <View style={{
-                justifyContent: 'center', //垂直居中
-                alignItems: 'center',//水平居中
-                flex:1
-            }}>
+            <View style={[styles.container, styles.xCenter]}>
+                <Text onPress={() => {
+                    this.props.navigator.jumpBack();//跳转回来
+                } }>&lt;返回</Text>
                 <Text>sysinfo bb 1</Text>
                 <Text>sysinfo bbb 12</Text>
             </View>
