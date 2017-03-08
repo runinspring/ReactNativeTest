@@ -2,11 +2,15 @@ import React, { Component } from 'react';
 import MainMenu from './pages/MainMenu';
 import Sysinfo from './pages/Sysinfo';
 import NavBar from './component/NavBar';
+import NetUtils from './lib/NetUtils';
 import {
     StyleSheet,
     Navigator,View,Text
 } from 'react-native';
 export default class MainScreen extends Component {
+    componentWillMount(){
+        NetUtils.register();
+    }
     /**
      * 使用动态页面加载
      * @param route 路由

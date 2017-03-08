@@ -2,33 +2,43 @@ import React, { Component } from 'react';
 import {
     StyleSheet,
     View, Text,
-    PixelRatio, Dimensions, Platform, NetInfo
+    PixelRatio, Dimensions, Platform,
 } from 'react-native';
+import NetUitls from '../lib/NetUtils';
 // var Dimensions = require('Dimensions');
 
 var {width, height, scale} = Dimensions.get('window');
 import MainScreen from '../MainScreen';
 export default class Sysinfo extends Component {
+
     state = {
-        netinfo: ''
+        netType: '',
+        connected: '',
+        checkNetworkConnected: '未知'
     }
     componentWillMount() {
-        console.log('componentWillMount');
-        //监听网络状态改变
-        NetInfo.addEventListener('change', (status) => {
-            this.setState({ netinfo: status });
-        });
+        console.log('getNetInfo:', NetUitls.getNetInfo())
+        this.setState(NetUitls.getNetInfo())
+        NetUitls.checkNetworkConnected((info) => {
+            console.log('检测网络链接状态:', info)
+        })
     }
-
-    changeNetInfo(status){
-        console.log(789798798798)
+    componentWillUnmount() {
+        // NetUtils.removeEventListener(NetUtils.EVENT_NETWORK_CHANGE,this.changeNetInfo)
+    }
+    // idd=0
+    changeNetInfo(type, status) {
+        // console.log(662,type,status,this.state)
+        var obj = {}
+        obj[type] = status;
+        this.setState(obj);
     }
     render() {
         var {styles} = this.props;
         console.log('Sysinfo.render')
         // console.log('styles.buttonBackUp:',styles.content)
         return (
-            <View style={[styles.container, styles.xCenter]}>
+            <View style={[styles.container, {paddingLeft:50}]}>
                 <Text onPress={() => {
                     this.props.navigator.jumpBack();//跳转回来
                 } }>&lt;返回</Text>
@@ -41,7 +51,11 @@ export default class Sysinfo extends Component {
                     <Text>系统版本:{Platform.Version}</Text>
                     <Text>是否为电视平台:{Platform.isTVOS.toString()}</Text>
                     <Text>是否为测试版本:{Platform.isTesting.toString()}</Text>
-                    <Text>网络信息:{this.state.netinfo}</Text>
+                    <Text>网络类型:{this.state.netType.toString()}</Text>
+                    <Text>网络是否联网:{this.state.connected.toString()}</Text>
+                    <Text onPress={() => { 
+                        NetUitls.checkNetworkConnected((type) => { this.setState({ checkNetworkConnected: type }) }) 
+                    } }>点击检查网络是否联网:{this.state.checkNetworkConnected.toString()}</Text>
                 </View>
 
             </View>
