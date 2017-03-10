@@ -17,7 +17,7 @@ export default class Sysinfo extends Component {
         checkNetworkConnected: '未知'
     }
     componentWillMount() {
-        console.log('getNetInfo:', NetUitls.getNetInfo())
+        // console.log('getNetInfo:', NetUitls.getNetInfo())
         this.setState(NetUitls.getNetInfo())
         NetUitls.checkNetworkConnected((info) => {
             console.log('检测网络链接状态:', info)
@@ -35,8 +35,8 @@ export default class Sysinfo extends Component {
     }
     render() {
         var {styles} = this.props;
-        console.log('Sysinfo.render')
-        // console.log('styles.buttonBackUp:',styles.content)
+        // console.log('Sysinfo.render')
+        // console.log('styles.buttonBackUp:',Platform)
         return (
             <View style={[styles.container, {paddingLeft:50}]}>
                 <Text onPress={() => {

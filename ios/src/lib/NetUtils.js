@@ -8,8 +8,7 @@ const register = () => {
     //实际应用中应该用回调方法来监听数据改变
     NetInfo.addEventListener('change', (stats) => {NET_TYPE = stats;});
     NetInfo.isConnected.addEventListener('change', (stats) => { NET_CONNECTED = stats; });
-    console.log('NetInfo:',NetInfo)
-
+    // console.log('NetInfo:',NetInfo)
 }
 /**网络类型 
  * none - 设备处于离线状态。

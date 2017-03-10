@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Sysinfo from './Sysinfo';
-import Sysinfo2 from './Sysinfo2';
+import Buttons from './Buttons';
+
 import {
     StyleSheet,
     View, TouchableHighlight,
@@ -26,8 +27,8 @@ export default class MainMenu extends Component {
                 break;
             case 1:
                 obj = {
-                    component: Sysinfo2,
-                    title: '系统信息2',
+                    component: Buttons,
+                    title: '按钮样式',
                     left: {
                         visible: true,
                         onPress: this.props.navigator.jumpBack
@@ -45,16 +46,28 @@ export default class MainMenu extends Component {
     render() {
         const {styles} = this.props;
         return (
-            <View style={[styles.container, styles.xCenter, { backgroundColor: 'gray' }]}>
-                <TouchableHighlight onPress={this.onButtonPress.bind(this, 0)}>
-                    <Text style={{ color: '#000000' }}>系统信息</Text>
+            <View style={[styles.container, styles.xCenter, stylesC.container]}>
+                <TouchableHighlight style={stylesC.button} onPress={this.onButtonPress.bind(this, 0)}>
+                    <Text style={stylesC.text}>系统信息</Text>
                 </TouchableHighlight>
-                <TouchableHighlight onPress={this.onButtonPress.bind(this, 1)}>
-                    <Text style={{ color: '#000000' }}>系统信息2</Text>
+                <TouchableHighlight style={stylesC.button} onPress={this.onButtonPress.bind(this, 1)}>
+                    <Text style={stylesC.text}>按钮样式</Text>
                 </TouchableHighlight>
             </View>
         );
     }
 }
-
+const stylesC = StyleSheet.create({
+    container:{
+        paddingTop:20,
+        backgroundColor: 'gray'
+    },
+    button: {
+        paddingBottom:20,
+    },
+    text:{
+        color:'black',
+        fontSize:20,
+    }
+});
 // <View style={[styles.container,styles.xyCenter,{backgroundColor:'gray'}]}>

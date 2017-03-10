@@ -31,8 +31,9 @@ exports.NavigationBarRouteMapper = {
 const styles = StyleSheet.create({
     navButton: {
         paddingTop: 13,
+        fontSize:20,
     },
     title: {
-        // fontSize:20,
+        fontSize:20,
     }
 })
