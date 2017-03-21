@@ -28,9 +28,9 @@ export default class MainScreen extends Component {
             <View style={styles.container}>
                 <Navigator
                     initialRoute={{
-                        // component: MainMenu,
+                        component: MainMenu,
                         // component: Sysinfo,
-                        component: Buttons,
+                        // component: Buttons,
                         title: '主菜单',
                         left:{
                             visible:false,//是否可见
